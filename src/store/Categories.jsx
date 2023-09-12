@@ -11,21 +11,26 @@ let initialState = {
             description: "Food for pets such as dogs and cats",
         },
     ],
-    activeCategory: "",
+    activeCategory: null,
 };
 
 export default (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case "REACTIVATE":
-            let newActive = state.categories.map((categorie) => {
+            console.log("reactivate", payload)
+            let newActive = state.categories.find((categorie) => {
             if (categorie.name == payload) {
+                console.log("if",categorie.name)
                 return categorie.name;
             }
             });
+            console.log("newActive",newActive)
             return {
                 categories: state.categories,
-                activeCategory: newActive,
+                activeCategory: newActive.name,
+                // ...state,
+                // activeCategory: payload
             };
 
         default:
@@ -36,6 +41,7 @@ export default (state = initialState, action) => {
 //actions
 
 export const reactivate = (name) => {
+    console.log("kkk",name)
     return {
         type: 'REACTIVATE',
         payload: name
