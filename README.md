@@ -14,6 +14,7 @@ Currently, two official plugins are available:
 
 
 ### [pull req](https://github.com/Mohammad-Aljamal/storefront/pull/1)
+### [pull req](https://github.com/Mohammad-Aljamal/storefront/pull/3)
 
 
-### ![sendbox](./sendbox.png)
+### ![Code sendBox](./sendbox.png)
