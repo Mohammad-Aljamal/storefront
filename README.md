@@ -9,12 +9,9 @@ Currently, two official plugins are available:
 # storefront
 
 
+### [pull req 36](https://github.com/Mohammad-Aljamal/storefront/pull/1)
+### [pull req 36](https://github.com/Mohammad-Aljamal/storefront/pull/3)
 
-### [finished the stor items](./src/store/)
-
-
-### [pull req](https://github.com/Mohammad-Aljamal/storefront/pull/1)
-### [pull req](https://github.com/Mohammad-Aljamal/storefront/pull/3)
-
+### [pull req 37](https://github.com/Mohammad-Aljamal/storefront/pull/5)
 
 ### [Code sendBox](https://gg2z9c-5173.csb.app/)
