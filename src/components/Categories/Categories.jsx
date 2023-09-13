@@ -1,8 +1,9 @@
 import React , {useState,useEffect} from "react";
 
 import { connect } from "react-redux";
-import { filterProducts } from "../../store/Products";
+import { filterProducts, removeItem } from "../../store/Products";
 import { reactivate } from "../../store/Categories";
+import { add } from "../../store/Cart";
 
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -85,8 +86,9 @@ function Categories(props) {
 const mapStateToProps = (state) => ({
     products: state.products,
     categories: state.categories,
+    cart: state.cart
   });
-  const mapDispatchToProps = { filterProducts, reactivate };
+  const mapDispatchToProps = { filterProducts, reactivate, add, removeItem };
   
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
