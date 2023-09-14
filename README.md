@@ -13,5 +13,6 @@ Currently, two official plugins are available:
 ### [pull req 36](https://github.com/Mohammad-Aljamal/storefront/pull/3)
 
 ### [pull req 37](https://github.com/Mohammad-Aljamal/storefront/pull/5)
+### [pull req 37](https://github.com/Mohammad-Aljamal/storefront/pull/7)
 
 ### [Code sendBox](https://gg2z9c-5173.csb.app/)

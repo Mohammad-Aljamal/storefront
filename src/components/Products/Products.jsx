@@ -2,7 +2,7 @@ import React from "react";
 
 import { connect } from "react-redux";
 import { filterProducts, removeItem } from "../../store/Products";
-import { reactivate } from "../../store/Categories";
+// import { reactivate } from "../../store/Categories";
 import { add } from "../../store/Cart";
 
 import Card from "@mui/material/Card";
@@ -11,11 +11,14 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+
+import "./Products.scss"
+
 function Products(props) {
 
-  function addToCart(item){
-    props.add(item);
-    props.removeItem(item)
+  function addToCart(item, cartProducts){
+    props.removeItem(item,cartProducts)
+    props.add(item)
   }
 
   return (
@@ -25,11 +28,11 @@ function Products(props) {
         if (item.categoryAssociation == props.categories.activeCategory) 
         {
           return (
-              <Card key={idx} sx={{ maxWidth: 345 }}>
+              <Card key={idx} sx={{ maxWidth: 345 }} className="Card">
                 <CardMedia
                   component="img"
                   alt="green iguana"
-                  height="140"
+                  height="200"
                   image={item.img}
                 />
                 <CardContent>
@@ -37,15 +40,15 @@ function Products(props) {
                     {item.name}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {item.description}
+                    {item.description.substring(0, 120)+ '...'}
                   </Typography>
                   <Typography variant="h6">Price: {item.price} JD</Typography>
                   <Typography variant="body2" color="text.secondary">
-                    item: {item.inventoryCount}
+                  In Stock: {item.inventoryCount}
                   </Typography>
                 </CardContent>
-                <CardActions>
-                  <Button size="small" onClick = {()=> addToCart(item)}>ADD TO CART</Button>
+                <CardActions className="item-button">
+                  <Button size="small" onClick = {()=> addToCart(item, props.cart.cartProducts)}>ADD TO CART</Button>
                   <Button size="small">VIEW ALL DETAILS</Button>
                 </CardActions>
               </Card>
@@ -62,6 +65,6 @@ const mapStateToProps = (state) => ({
   categories: state.categories,
   cart: state.cart
 });
-const mapDispatchToProps = { filterProducts, reactivate, add, removeItem };
+const mapDispatchToProps = { filterProducts, add, removeItem };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

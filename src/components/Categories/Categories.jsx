@@ -1,4 +1,4 @@
-import React , {useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import { connect } from "react-redux";
 import { filterProducts, removeItem } from "../../store/Products";
@@ -9,87 +9,80 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Box from "@mui/material/Box";
 
-
-
 // import InputLabel from '@mui/material/InputLabel';
 // import MenuItem from '@mui/material/MenuItem';
 // import FormControl from '@mui/material/FormControl';
 // import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 function Categories(props) {
+  // useEffect (() => {
 
-    // useEffect (() => {
-        
-    //     console.log("useEffect",props)
-    
-    // },[active])
+  //     console.log("useEffect",props)
 
-    // function active (name){
-    //     // e.preventdefault();
-    //     // ((name)=> {
-    //     //     props.reactivate(name);
-    //     // })(name)
-        
-    //     console.log("mmm",name);
-    //     props.filterProducts(props.categories.activeCategory);
-    // }
+  // },[active])
+
+  // function active (name){
+  //     // e.preventdefault();
+  //     // ((name)=> {
+  //     //     props.reactivate(name);
+  //     // })(name)
+
+  //     console.log("mmm",name);
+  //     props.filterProducts(props.categories.activeCategory);
+  // }
+
+  console.log(props.products)
+  console.log(props.categories.activeCategory)
+
 
   return (
-    <div className="nav">
-      <div>
+    <div>
+      <span>
         <h3>Browse our Category</h3>
-      </div>
+      </span>
 
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          alignItems: "start",
           "& > *": {
             m: 1,
           },
         }}
       >
-        <ButtonGroup variant="text" aria-label="text button group">
-            {/* <section> */}
-                { props.categories.categories.map((categorie, idx) => {
-                    return(
-                        <Button key={idx} onClick={()=> props.reactivate(categorie.name)}>{categorie.name}</Button> //props.reactivate(categorie.name)
-                    )
-                })}
-            {/* </section> */}
+        <ButtonGroup variant="text" aria-label="text button group" className="button-group-container">
+          {props.categories.categories.map((categorie, idx) => {
+            return (
+              <Button
+                key={idx}
+                className="button-group"
+                onClick={() => props.reactivate(categorie.name)}
+              >
+                {categorie.name}
+              </Button> //props.reactivate(categorie.name)
+            );
+          })}
         </ButtonGroup>
       </Box>
 
-      <section>
-      <h3>{props.categories.activeCategory}</h3>
+      <section className="center-column">
+        <h3>{props.categories.activeCategory}</h3>
       </section>
+      <br/>
+      <br/>
+      {/* <br/> */}
 
-      {/* <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl> */}
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
-    products: state.products,
-    categories: state.categories,
-    cart: state.cart
-  });
-  const mapDispatchToProps = { filterProducts, reactivate, add, removeItem };
-  
+  products: state.products,
+  categories: state.categories,
+  cart: state.cart,
+});
+const mapDispatchToProps = { filterProducts, reactivate, add, removeItem };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
 // export default Categories;

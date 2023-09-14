@@ -17,6 +17,14 @@ let initialState = {
             img: "https://phonatech.shop/cdn/shop/products/ghgh_720x720.jpg?v=1668291515"
         },
         {
+            categoryAssociation: "Electronics",
+            name: "IPHONE 13 PRO MAX",
+            description: "The iPhone 13 Pro Max is Apple's flagship smartphone with advanced features, exceptional camera capabilities, and a large OLED display",
+            price: 850,
+            inventoryCount: 70,
+            img: "https://phonatech.shop/cdn/shop/products/iphone-14-pro-finish-select-202209-6-7inch-deeppurple_720x720.jpg?v=1665087736"
+        },
+        {
             categoryAssociation: "Pet Food",
             name: "Fancy Feast",
             description: "Gravy Lovers Poultry & Beef Feast Variety Pack Canned Cat Food.",
@@ -47,8 +55,15 @@ export default (state = initialState, action) => {
             }
         
         case 'REMOVEITEM':
+
+            let itemLoad = payload.cartProducts.find((item) => item.name==payload.item.name)
+            if(itemLoad){
+                return state
+            }
+
             let newItem = state.products.map((item) => {
-                if(item.name == payload.name){
+                if(item.name == payload.item.name){
+                    // con
                     return{
                         ...item,
                         inventoryCount: item.inventoryCount - 1
@@ -62,7 +77,7 @@ export default (state = initialState, action) => {
             }
 
         default: 
-            return {products: state.products}   
+            return state;   
     }
 }
 
@@ -76,10 +91,10 @@ export const filterProducts = (categoryAssociation) => {
     }
 }
 
-export const removeItem = (item) => {
+export const removeItem = (item, cartProducts) => {
     return {
         type: 'REMOVEITEM',
-        payload: item
+        payload: {item: item, cartProducts: cartProducts}
     }
 }
 
