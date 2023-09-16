@@ -1,13 +1,13 @@
 let initialState = {
     categories: [
         {
-            name: "Electronics",
-            displayName: "Electronics",
+            name: "electronics",
+            displayName: "electronics",
             description: "Electronic and electrical equipment",
         },
         {
-            name: "Pet Food",
-            displayName: "Pet Food",
+            name: "pet food",
+            displayName: "pet food",
             description: "Food for pets such as dogs and cats",
         },
     ],
@@ -18,20 +18,34 @@ export default (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case "REACTIVATE":
-            console.log("reactivate", payload)
             let newActive = state.categories.find((categorie) => {
             if (categorie.name == payload) {
-                console.log("if",categorie.name)
                 return categorie.name;
             }
             });
-            console.log("newActive",newActive)
             return {
                 categories: state.categories,
                 activeCategory: newActive.name,
                 // ...state,
                 // activeCategory: payload
             };
+
+        case 'GETCATEGORIES':
+            // let ss = payload.split(",")
+            console.log("type",typeof(payload));
+            console.log("type",payload);
+
+            // let lll = 
+            payload.map((item) => {
+                state.categories.push({name: item, displayName: item});
+                // return [...state.categories,{name: item, displayName: item}]
+            })
+            console.log("lll",lll)
+            return state;
+            // return {
+            //     ...state,
+            //     categories: lll
+            // }
 
         default:
             return state;
@@ -41,7 +55,7 @@ export default (state = initialState, action) => {
 //actions
 
 export const reactivate = (name) => {
-    console.log("kkk",name)
+    // console.log("kkk",name)
     return {
         type: 'REACTIVATE',
         payload: name

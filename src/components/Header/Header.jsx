@@ -5,9 +5,9 @@ import Navbar from "react-bootstrap/Navbar";
 import './Header.scss';
 
 import { connect } from "react-redux";
-import { filterProducts, removeItem } from "../../store/Products";
+import { filterProducts, removeItemToCart } from "../../store/Products";
 import { reactivate } from "../../store/Categories";
-import { add } from "../../store/Cart";
+import { addToCart } from "../../store/Cart";
 
 function Header(props) {
   return (
@@ -29,5 +29,5 @@ const mapStateToProps = (state) => ({
   categories: state.categories,
   cart: state.cart,
 });
-const mapDispatchToProps = { filterProducts, reactivate, add, removeItem };
+const mapDispatchToProps = { filterProducts, reactivate, addToCart, removeItemToCart };
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
