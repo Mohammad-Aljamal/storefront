@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 import { connect } from "react-redux";
-import { filterProducts, removeItem } from "../../store/Products";
+import { filterProducts, removeItemToCart } from "../../store/Products";
 import { reactivate } from "../../store/Categories";
-import { add } from "../../store/Cart";
+import { addToCart } from "../../store/Cart";
 
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -31,9 +31,6 @@ function Categories(props) {
   //     props.filterProducts(props.categories.activeCategory);
   // }
 
-  console.log(props.products)
-  console.log(props.categories.activeCategory)
-
 
   return (
     <div>
@@ -60,14 +57,14 @@ function Categories(props) {
                 onClick={() => props.reactivate(categorie.name)}
               >
                 {categorie.name}
-              </Button> //props.reactivate(categorie.name)
+              </Button>
             );
           })}
         </ButtonGroup>
       </Box>
 
       <section className="center-column">
-        <h3>{props.categories.activeCategory}</h3>
+        <h3>{props.categories.activeCategory.toUpperCase()}</h3>
       </section>
       <br/>
       <br/>
@@ -82,7 +79,7 @@ const mapStateToProps = (state) => ({
   categories: state.categories,
   cart: state.cart,
 });
-const mapDispatchToProps = { filterProducts, reactivate, add, removeItem };
+const mapDispatchToProps = { filterProducts, reactivate, addToCart, removeItemToCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);
 // export default Categories;

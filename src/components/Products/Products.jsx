@@ -1,9 +1,9 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { filterProducts, removeItem } from "../../store/Products";
+import { filterProducts, removeItemToCart } from "../../store/Products";
 // import { reactivate } from "../../store/Categories";
-import { add } from "../../store/Cart";
+import { addToCart } from "../../store/Cart";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -16,9 +16,9 @@ import "./Products.scss"
 
 function Products(props) {
 
-  function addToCart(item, cartProducts){
-    props.removeItem(item,cartProducts)
-    props.add(item)
+  function addtocart(item, cartProducts){
+    props.removeItemToCart(item,cartProducts)
+    props.addToCart(item)
   }
 
   return (
@@ -33,7 +33,7 @@ function Products(props) {
                   component="img"
                   alt="green iguana"
                   height="200"
-                  image={item.img}
+                  image={item.image}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
@@ -48,7 +48,7 @@ function Products(props) {
                   </Typography>
                 </CardContent>
                 <CardActions className="item-button">
-                  <Button size="small" onClick = {()=> addToCart(item, props.cart.cartProducts)}>ADD TO CART</Button>
+                  <Button size="small" onClick = {()=> addtocart(item, props.cart.cartProducts)}>ADD TO CART</Button>
                   <Button size="small">VIEW ALL DETAILS</Button>
                 </CardActions>
               </Card>
@@ -65,6 +65,6 @@ const mapStateToProps = (state) => ({
   categories: state.categories,
   cart: state.cart
 });
-const mapDispatchToProps = { filterProducts, add, removeItem };
+const mapDispatchToProps = { filterProducts, addToCart, removeItemToCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);
