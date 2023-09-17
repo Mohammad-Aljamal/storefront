@@ -14,8 +14,7 @@ const getCategories = (payload) => {
 export const getNewCategories = () => (dispatch) => {
     return superagent.get(actegoriesAPI)
         .then((data)=> {
-            // console.log("datannnnnnnnn=>",data.text)
-            dispatch(getCategories(data.text))
+            dispatch(getCategories(JSON.parse(data.text)))
         })
 }
 
@@ -31,8 +30,7 @@ const getProducts = (payload) => {
 export const getNewProducts = () => (dispatch) => {
     return superagent.get(productsAPI)
         .then((data)=> {
-                        console.log("datannnnnnnnn=>",data)
-            dispatch(getProducts(data))
+            dispatch(getProducts(data.body))
         })
 }
 

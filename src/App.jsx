@@ -14,12 +14,8 @@ import {getNewCategories, getNewProducts} from './store/action'
 function App(props) {
 
   useEffect (()=> {
-    // props.getNewCategories();
-    // console.log(props.Categories.categories)
-    // console.log(props.getNewCategories());
-    // console.log('"""""',props.getNewProducts())
+    props.getNewCategories();
     props.getNewProducts()
-
   },[])
 
   return (
