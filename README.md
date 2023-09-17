@@ -16,5 +16,6 @@ Currently, two official plugins are available:
 ### [pull req lab 37](https://github.com/Mohammad-Aljamal/storefront/pull/7)
 
 ### [pull req lab 38](https://github.com/Mohammad-Aljamal/storefront/pull/8)
+### [pull req lab 38](https://github.com/Mohammad-Aljamal/storefront/pull/9)
 
 ### [Code sendBox](https://gg2z9c-5173.csb.app/)

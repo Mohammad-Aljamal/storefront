@@ -31,21 +31,12 @@ export default (state = initialState, action) => {
             };
 
         case 'GETCATEGORIES':
-            // let ss = payload.split(",")
-            console.log("type",typeof(payload));
-            console.log("type",payload);
-
-            // let lll = 
             payload.map((item) => {
-                state.categories.push({name: item, displayName: item});
-                // return [...state.categories,{name: item, displayName: item}]
+                if(!state.categories.some(category => category.name === item)){
+                    state.categories.push({name: item, displayName: item});
+                }
             })
-            console.log("lll",lll)
             return state;
-            // return {
-            //     ...state,
-            //     categories: lll
-            // }
 
         default:
             return state;

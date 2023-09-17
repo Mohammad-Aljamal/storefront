@@ -32,7 +32,7 @@ function Products(props) {
                 <CardMedia
                   component="img"
                   alt="green iguana"
-                  height="200"
+                  height="250"
                   image={item.image}
                 />
                 <CardContent>
