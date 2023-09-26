@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { filterProducts, removeItemToCart } from "../../store/Products";
@@ -17,7 +18,11 @@ import "./Products.scss"
 function Products(props) {
 
   function addtocart(item, cartProducts){
-    props.removeItemToCart(item,cartProducts)
+    const action ={
+      item:item,
+      cartProducts:cartProducts
+    }
+    props.removeItemToCart(action)
     props.addToCart(item)
   }
 
@@ -49,7 +54,8 @@ function Products(props) {
                 </CardContent>
                 <CardActions className="item-button">
                   <Button size="small" onClick = {()=> addtocart(item, props.cart.cartProducts)}>ADD TO CART</Button>
-                  <Button size="small">VIEW ALL DETAILS</Button>
+                  <Button size="small"><Link to = {`/product/${item.id}`}>VIEW ALL DETAILS</Link></Button>
+                  
                 </CardActions>
               </Card>
           );
